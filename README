@@ -1,7 +1,4 @@
-# luajit-2.0 - android specific for adbshell
-Luajit 2.0 Repository with build scripts for Android
-
-###README for LuaJIT 2.0.4
+README for LuaJIT 2.0.4
 -----------------------
 
 LuaJIT is a Just-In-Time (JIT) compiler for the Lua programming language.

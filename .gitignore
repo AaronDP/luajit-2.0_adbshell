@@ -30,3 +30,23 @@ proguard/
 
 # Android Studio captures folder
 captures/
+
+# My dev stuff
+*.sh
+myenvironment.set
+Makefile
+*.backup.h
+*.save.h
+luajit
+lj_bcdef.h
+lj_ffdef.h
+lj_libdef.h
+lj_recdef.h
+lj_folddef.h
+lj_vm.s
+
+# not ready for these .. yet
+Application.mk
+Android.mk
+.luaconf.h
+.notes.txt
