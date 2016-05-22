@@ -32,7 +32,6 @@ proguard/
 captures/
 
 # My dev stuff
-*.sh
 myenvironment.set
 Makefile
 *.backup.h
