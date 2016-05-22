@@ -13,6 +13,28 @@
 #include <stddef.h>
 
 /* Default path for loading Lua and C modules with require(). */
+#if defined(__ANDROID__)
+/* 
+** And, ya I patched it, because there is no such structure 
+** on Android and we are creating a customized environment 
+** over there.
+** ADB USER (2000) HOME directory     = /data/local/tmp/etc
+** directory for library *and* share  = /data/local/tmp/lib
+** directory for binary files         = /data/local/tmp/xbin 
+** directory for linked fifos         = /data/local/tmp/fifos
+** Linked fifos are for IPC between ADBSHELL daemon(id:2000) and UTILAPP(id:0)
+** UTILAPP will link own home folder links 
+** (/data/data/UTILAPP/app_etc/<binary>) to xbin location
+** UTILAPP will create 3 fifos at (/data/data/UTILAPP/app_fifos/<fifo>) for
+** app_stdin, app_stdout, app_stderr which the ADBSHELL will also link to
+** to provide IPC without permission issues or socket closes.
+*/
+#define LUA_PATH_DEFAULT	"./?.lua;/data/local/tmp/lib/luajit-2.0.4/?.lua;/data/local/tmp/lib/lua/5.1/?.lua;/data/local/tmp/lib/lua/5.1/?/init.lua;/data/local/tmp/lib/lua/5.1/?.lua;/data/local/tmp/lib/lua/5.1/?/init.lua"
+#define LUA_CPATH_DEFAULT	"./?.so;/data/local/tmp/lib/lua/5.1/?.so;/data/local/tmp/lib/lua/5.1/?.so;/data/local/tmp/lib/lua/5.1/loadall.so"
+
+
+#else
+/* Default path for loading Lua and C modules with require(). */
 #if defined(_WIN32)
 /*
 ** In Windows, any exclamation mark ('!') in the path is replaced by the
@@ -61,6 +83,7 @@
 #define LUA_PATH_DEFAULT	"./?.lua" LUA_JPATH LUA_LLPATH LUA_RLPATH
 #define LUA_CPATH_DEFAULT	"./?.so" LUA_LCPATH1 LUA_RCPATH LUA_LCPATH2
 #endif
+#endif /* __ANDROID__ */
 
 /* Environment variable names for path overrides and initialization code. */
 #define LUA_PATH	"LUA_PATH"
