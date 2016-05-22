@@ -33,9 +33,6 @@ captures/
 
 # My dev stuff
 myenvironment.set
-Makefile
-*.backup.h
-*.save.h
 luajit
 lj_bcdef.h
 lj_ffdef.h
