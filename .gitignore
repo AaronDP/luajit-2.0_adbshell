@@ -42,7 +42,8 @@ lj_folddef.h
 lj_vm.s
 
 # not ready for these .. yet
-Application.mk
-Android.mk
-.luaconf.h
+#Application.mk
+#Android.mk
+#.luaconf.h
 .notes.txt
+*.o

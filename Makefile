@@ -24,22 +24,23 @@ ABIVER=  5.1
 # Change the installation path as needed. This automatically adjusts
 # the paths in jni/luaconf.h, too. Note: PREFIX must be an absolute path!
 #
-export PREFIX= /usr/local
+export PREFIX= /data/local/tmp
 export MULTILIB= lib
 ##############################################################################
 
 DPREFIX= $(DESTDIR)$(PREFIX)
-INSTALL_BIN=   $(DPREFIX)/bin
+INSTALL_BIN=   $(DPREFIX)/xbin
 INSTALL_LIB=   $(DPREFIX)/$(MULTILIB)
 INSTALL_SHARE= $(DPREFIX)/share
-INSTALL_INC=   $(DPREFIX)/include/luajit-$(MAJVER).$(MINVER)
+INSTALL_INC=   $(DPREFIX)/lib/luajit-$(MAJVER).$(MINVER)
 
 INSTALL_LJLIBD= $(INSTALL_SHARE)/luajit-$(VERSION)
-INSTALL_JITLIB= $(INSTALL_LJLIBD)/jit
+#INSTALL_JITLIB= $(INSTALL_LJLIBD)/jit
 INSTALL_LMODD= $(INSTALL_SHARE)/lua
 INSTALL_LMOD= $(INSTALL_LMODD)/$(ABIVER)
 INSTALL_CMODD= $(INSTALL_LIB)/lua
 INSTALL_CMOD= $(INSTALL_CMODD)/$(ABIVER)
+INSTALL_JITLIB= $(INSTALL_CMOD)/jit
 INSTALL_MAN= $(INSTALL_SHARE)/man/man1
 INSTALL_PKGCONFIG= $(INSTALL_LIB)/pkgconfig
 
